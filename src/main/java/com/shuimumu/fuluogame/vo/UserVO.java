@@ -11,6 +11,9 @@ public class UserVO {
     private String phone;               // 手机号
 
 
+    private String email;               // 邮箱（仅本人资料接口返回，批量/公开场景会置空）
+
+
     private String username;            // 用户名
 
 

@@ -5,6 +5,23 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 20MB
+  # 登录验证码邮件（QQ 邮箱 SMTP；password 填邮箱「授权码」，不是登录密码）
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: your_qq@qq.com
+    password: your_smtp_auth_code
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
   logging:
     level:
       com.shuimumu:debug
@@ -80,6 +97,11 @@ fuluo:
   moderation:
     # 内容审核总开关：生产必须 true
     enabled: true
+  mail:
+    # 邮件总开关：false 时不真正发信，仅在日志打印验证码（本地调试用）
+    enabled: true
+    from: your_qq@qq.com
+    from-name: 福洛游戏
 logging:
   level:
     com:

@@ -141,6 +141,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             }, UserRedisKeys.CACHE_USER_TTL, TimeUnit.MINUTES);
             if (uvo != null) result.put(uid, uvo);
         }
+        // 邮箱属于隐私字段：批量填充（帖子/评论作者等公开场景）一律不外发
+        for (UserVO uvo : result.values()) {
+            uvo.setEmail(null);
+        }
         return result;
     }
 
